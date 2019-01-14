@@ -1,0 +1,149 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{geometry}
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize\textsl{Page \thepage\ of \pageref{LastPage}}}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+\usepackage[format=hang,font=normalsize,labelfont=bf]{caption}
+\usepackage{listings}
+\lstset{frame=single,
+  language=Python,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{harvard}
+\usepackage{setspace}
+\usepackage{float,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=red,urlcolor=blue}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{derivation}{Derivation} % Number derivations on their own
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition} % Number propositions on their own
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+%\numberwithin{equation}{section}
+\bibliographystyle{aer}
+\newcommand\ve{\varepsilon}
+\newcommand\boldline{\arrayrulewidth{1pt}\hline}
+
+
+\begin{document}
+
+\begin{flushleft}
+  \textbf{\large{Problem Set \#[1]}} \\
+  MACS 30000, Dr. Evans \\
+  Tianxin Zheng
+\end{flushleft}
+
+\vspace{5mm}
+
+\noindent\textbf{Problem 1}
+
+\textbf{Part (a).} 
+I found a statistical model from a paper studying the impact of demolition and relocation on outcome for children in American Economic Review
+
+\textbf{Part (b).} 
+Chyn, Eric. 2018. "Moved to Opportunity: The Long-Run Effects of Public Housing Demolition on Children." American Economic Review, 108 (10): 3028-56.
+DOI: 10.1257/aer.20161352
+
+\textbf{Part (c).} 
+The model I chose is as follows:
+
+\begin{equation*}
+  Y_{it} = \alpha + \beta D _{b(i)} + \psi _{p(i)} + \epsilon_{it}
+\end{equation*}
+
+where i is an individual and t represents years. The indexes b(i) and p(i) are the building and project for individual i. The term    $\psi_{p(i)}$ is a set of project fixed effects. The dummy variable $D_{b(i)}$ takes a value of 1 if an individual lived in a building slated for demolition.  $\beta$ represents the net impact of relocation due to demolition on children’s outcomes.
+
+
+\textbf{Part (d).} 
+
+
+$ \psi _{p(i)}, D _{b(i)}$ are exogenous.
+ $Y_{it}$ is endogenous.
+
+
+\textbf{Part (e).} 
+
+This is a dynamic, linear, deterministic model. 
+
+\textbf{Part (f).} 
+
+The model might miss gender as an independent variable.
+There are many literature talking about gender wage gap (Blau \& Kahn, 2007; Weichselbaumer \& Winter-Ebmer, 2005), so it would be better to involve gender as a control variable when measuring the outcome.\\
+
+
+
+ 
+\noindent\textbf{Problem 2}
+ 
+\textbf{Part (a) - (c).} 
+ 
+ I built a logit model to determine whether someone decides to get married. 
+\begin{equation*}
+logit(y_{i}) = \beta_{0} + \beta_{1}Age_{i} + \beta _{2}Gender_{i} + \beta_{3}log(Income_{i}) + \beta_{4}Educ_{i} + \epsilon_{i}
+\end{equation*}
+
+In this model, the dependent variable is a binary variable indicating one's decision to get married, where y = 1 if one decides to get married and y = 0 if one decides not to get married. The independent variables are a person's age, gender, log income and education level.
+We could use survey method to get the data of all our concerning variables, thus it is a feasible data generating process.
+
+\textbf{Part (d).}
+I think the key factors that influence someone's decision to get married are age, education and income. 
+
+\textbf{Part (f).}
+For age, it is pretty common that people's willingness to get married are increasing with age.   People with older age are more likely to get married.  
+
+For gender, sometimes female may be more willing to get married compared with male.
+
+Income could influence one's overall life quality thus influencing one decision to get married. People with higher income would be more confident to get married and raise a family.
+
+Education could directly influence one's way of thinking as well as view about marriage.
+ 
+\textbf{Part (g).}
+ The simplest way to test the model is to conduct a survey. In that survey, we could ask the participating individuals to provide the information about their age, gender, education level (high school, college, graduate etc.), income(with different range) and their decision to get married. After collecting these data, we could run a logit regression and analyze the result to see whether the coefficients are significant.
+\\
+\\
+\noindent References\\
+
+\noindent Blau, Francine D.; Kahn, Lawrence M. (2007). "The Gender Pay Gap: Have Women Gone as Far as They Can?". Academy of Management Perspectives. 21 (1): 7–23. doi:10.5465/AMP.2007.24286161.\\
+
+
+\noindent Weichselbaumer, Doris; Winter-Ebmer, Rudolf (2005). "A Meta-Analysis on the International Gender Wage Gap" . Journal of Economic Surveys. 19 (3): 479–511. doi:10.1111/j.0950-0804.2005.00256.x
+
+\end{document}
