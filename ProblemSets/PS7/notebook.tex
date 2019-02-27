@@ -347,7 +347,7 @@
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{solver}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{newton\PYZhy{}cg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{multi\PYZus{}class}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{multinomial}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{clf} \PY{o}{=} \PY{n}{LogisticRegression}\PY{p}{(}\PY{n}{solver}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{newton\PYZhy{}cg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{multi\PYZus{}class}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{multinomial}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -360,11 +360,11 @@
 
 \begin{Verbatim}[commandchars=\\\{\}]
 {\color{outcolor}Out[{\color{outcolor}6}]:}              j=1        j=2
-        beta0 -23.580699  23.701362
-        beta1   1.559151  -1.393679
-        beta2  -0.141648  -0.511138
-        beta3   1.554147   0.498860
-        beta4   0.113194  -1.146267
+        beta0 -24.011332  22.801680
+        beta1   1.700433  -1.467985
+        beta2  -0.265610  -0.333051
+        beta3   1.223894   0.664006
+        beta4   0.022748  -0.922709
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -376,16 +376,16 @@
     \begin{Verbatim}[commandchars=\\\{\}]
              precision    recall  f1-score   support
 
-          1       0.93      1.00      0.96        13
-          2       1.00      0.95      0.98        21
+          1       0.87      1.00      0.93        13
+          2       1.00      0.90      0.95        21
           3       1.00      1.00      1.00        10
 
-avg / total       0.98      0.98      0.98        44
+avg / total       0.96      0.95      0.96        44
 
 
     \end{Verbatim}
 
-    The error rates are 7\%, 0\%, and 0\% for group 1,2, and 3,
+    The error rates are 13\%, 0\%, and 0\% for group 1,2, and 3,
 respectively.
 
 The model is best at predicting the third group (highest f1-score).
@@ -761,13 +761,13 @@ test estimate MSE standard err= 0.04821182598999188
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/CoolIndex.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{names}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CoolIndex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
-         \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{df1} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{data/CoolIndex.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{names}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Cool}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{df1}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}15}]:}     Age  CoolIndex
+{\color{outcolor}Out[{\color{outcolor}15}]:}     Age       Cool
          0  11.0  10.981602
          1  11.0  11.364925
          2  11.0  10.190227
@@ -776,30 +776,19 @@ test estimate MSE standard err= 0.04821182598999188
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
-         \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{royalblue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.8}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x} \PY{o}{=}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{y} \PY{o}{=}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cool}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Points}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Scatter Plot of Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
          \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age distribution of Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_23_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
     
-    \begin{verbatim}
-<IPython.core.display.Javascript object>
-    \end{verbatim}
-
-    
-    
-    \begin{verbatim}
-<IPython.core.display.HTML object>
-    \end{verbatim}
-
-    
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}16}]:} Text(0.5,1,'Age distribution of Coolness Index')
-\end{Verbatim}
-            
     \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \setcounter{enumi}{1}
@@ -807,60 +796,94 @@ test estimate MSE standard err= 0.04821182598999188
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{y1} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{l+m+mi}{11}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZlt{}}\PY{l+m+mi}{22}\PY{p}{)}\PY{p}{]}
-         \PY{n}{y2} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{l+m+mi}{22}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZlt{}}\PY{l+m+mi}{40}\PY{p}{)}\PY{p}{]}
-         \PY{n}{y3} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZlt{}}\PY{l+m+mi}{59}\PY{p}{)}\PY{p}{]}
-         \PY{n}{y4} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{l+m+mi}{59}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZlt{}}\PY{l+m+mi}{77}\PY{p}{)}\PY{p}{]}
-         \PY{n}{y5} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{l+m+mi}{77}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{o}{\PYZlt{}}\PY{o}{=}\PY{l+m+mi}{95}\PY{p}{)}\PY{p}{]}
-         \PY{n}{params} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-         \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{p}{[}\PY{n}{y1}\PY{p}{,}\PY{n}{y2}\PY{p}{,}\PY{n}{y3}\PY{p}{,}\PY{n}{y4}\PY{p}{,}\PY{n}{y5}\PY{p}{]}\PY{p}{:}
-             \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{y}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
-             \PY{n}{model} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{)}
-             \PY{n}{result} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-             \PY{c+c1}{\PYZsh{}print(result.params[0])}
-             \PY{n}{params}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{result}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{df1}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{11}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{l+m+mi}{22}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{df1}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{22}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{l+m+mi}{40}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{df1}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G3}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{40}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{l+m+mi}{59}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{df1}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G4}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{59}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{l+m+mi}{77}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{df1}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G5}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{77}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{95}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}18}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
-         \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{royalblue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.8}\PY{p}{)}
-         \PY{n}{x\PYZus{}min} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{59}\PY{p}{,} \PY{l+m+mi}{77}\PY{p}{]}\PY{p}{)}
-         \PY{n}{x\PYZus{}max} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{59}\PY{p}{,} \PY{l+m+mi}{77}\PY{p}{,} \PY{l+m+mi}{95}\PY{p}{]}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{hlines}\PY{p}{(}\PY{n}{params}\PY{p}{,} \PY{n}{x\PYZus{}min}\PY{p}{,} \PY{n}{x\PYZus{}max}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crimson}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Step function}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age distribution of Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\end{Verbatim}
-
-
-    
-    \begin{verbatim}
-<IPython.core.display.Javascript object>
-    \end{verbatim}
-
-    
-    
-    \begin{verbatim}
-<IPython.core.display.HTML object>
-    \end{verbatim}
-
-    
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}18}]:} Text(0.5,1,'Age distribution of Coolness Index')
-\end{Verbatim}
-            
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}19}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{params}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{X}\PY{o}{=}\PY{n}{df1}\PY{p}{[}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G3}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G4}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G5}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{]}
+         \PY{n}{reg}\PY{o}{=}\PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cool}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{n}{missing}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{drop}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{reg}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-[20.102457252090748, 34.475788077559386, 37.635105492449604, 35.22540004024275, 27.296378244321282]
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   Cool   R-squared:                       0.429
+Model:                            OLS   Adj. R-squared:                  0.427
+Method:                 Least Squares   F-statistic:                     178.7
+Date:                Wed, 27 Feb 2019   Prob (F-statistic):          3.73e-114
+Time:                        10:50:59   Log-Likelihood:                -3214.5
+No. Observations:                 956   AIC:                             6439.
+Df Residuals:                     951   BIC:                             6463.
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+G1            20.1025      0.562     35.746      0.000      18.999      21.206
+G2            34.4758      0.431     80.006      0.000      33.630      35.321
+G3            37.6351      0.424     88.814      0.000      36.804      38.467
+G4            35.2254      0.485     72.560      0.000      34.273      36.178
+G5            27.2964      0.936     29.175      0.000      25.460      29.132
+==============================================================================
+Omnibus:                       80.102   Durbin-Watson:                   1.236
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              101.718
+Skew:                           0.714   Prob(JB):                     8.17e-23
+Kurtosis:                       3.719   Cond. No.                         2.21
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
     \end{Verbatim}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Beta\PYZus{}}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ = }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{reg}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Beta\_1 = 20.102457252090748
+Beta\_2 = 34.47578807755938
+Beta\_3 = 37.63510549244961
+Beta\_4 = 35.22540004024275
+Beta\_5 = 27.296378244321282
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{The predicted coolness of a 73\PYZhy{}year old from the stepwise function is}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{reg}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The predicted coolness of a 73-year old from the stepwise function is 35.22540004024275
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cool}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Points}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df1}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OLS Stepwise}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coolness Index}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coolness Index against age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_29_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \setcounter{enumi}{2}
@@ -868,47 +891,55 @@ test estimate MSE standard err= 0.04821182598999188
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}20}]:} \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{interpolate} \PY{k}{import} \PY{n}{LSQUnivariateSpline}
-         \PY{n}{t} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{22.0}\PY{p}{,}\PY{l+m+mf}{40.0}\PY{p}{,}\PY{l+m+mi}{59}\PY{p}{,} \PY{l+m+mf}{77.0}\PY{p}{]}\PY{p}{)}
-         \PY{n}{df}\PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{df2}\PY{o}{=}\PY{n}{df1}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{df2}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{=}\PY{n}{df2}\PY{o}{.}\PY{n}{index}
+         \PY{n}{df2}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{grouped} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{as\PYZus{}index} \PY{o}{=} \PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
-         \PY{n}{spl} \PY{o}{=} \PY{n}{LSQUnivariateSpline}\PY{p}{(}\PY{n}{grouped}\PY{o}{.}\PY{n}{Age}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{grouped}\PY{o}{.}\PY{n}{CoolIndex}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
-         \PY{n}{age\PYZus{}new} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{95}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}22}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
-         \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{royalblue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.8}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{hlines}\PY{p}{(}\PY{n}{params}\PY{p}{,} \PY{n}{x\PYZus{}min}\PY{p}{,} \PY{n}{x\PYZus{}max}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crimson}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Step function}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{age\PYZus{}new}\PY{p}{,} \PY{n}{spl}\PY{p}{(}\PY{n}{age\PYZus{}new}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Linear Spline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age distribution of Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\end{Verbatim}
-
-
-    
-    \begin{verbatim}
-<IPython.core.display.Javascript object>
-    \end{verbatim}
-
-    
-    
-    \begin{verbatim}
-<IPython.core.display.HTML object>
-    \end{verbatim}
-
-    
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}22}]:} Text(0.5,1,'Age distribution of Coolness Index')
+{\color{outcolor}Out[{\color{outcolor}22}]:}            Cool  G1  G2  G3  G4  G5   Age
+         Age                                      
+         11.0  10.110237   1   0   0   0   0  11.0
+         12.0   9.365623   1   0   0   0   0  12.0
+         13.0  10.015882   1   0   0   0   0  13.0
+         14.0  11.747109   1   0   0   0   0  14.0
+         15.0  15.434739   1   0   0   0   0  15.0
 \end{Verbatim}
             
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{knots}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{59}\PY{p}{,} \PY{l+m+mi}{77}\PY{p}{]}
+         \PY{n}{linear\PYZus{}spline}\PY{o}{=}\PY{n}{LSQUnivariateSpline}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{df2}\PY{o}{.}\PY{n}{Cool}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{t}\PY{o}{=}\PY{n}{knots}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df1}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{df1}\PY{o}{.}\PY{n}{Cool}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Points}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df1}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OLS Stepwise}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{linear\PYZus{}spline}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{g}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Linear Spline}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coolness Index}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coolness Index against age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_33_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{The predicted coolness of a 73\PYZhy{}year old from the linear spline is}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linear\PYZus{}spline}\PY{p}{(}\PY{l+m+mi}{73}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The predicted coolness of a 73-year old from the linear spline is 32.86784862349653
+
+    \end{Verbatim}
+
     \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \setcounter{enumi}{3}
@@ -916,35 +947,38 @@ test estimate MSE standard err= 0.04821182598999188
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}23}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
-         \PY{n}{spl2} \PY{o}{=} \PY{n}{LSQUnivariateSpline}\PY{p}{(}\PY{n}{grouped}\PY{o}{.}\PY{n}{Age}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{grouped}\PY{o}{.}\PY{n}{CoolIndex}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{df}\PY{o}{.}\PY{n}{CoolIndex}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{royalblue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.8}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{hlines}\PY{p}{(}\PY{n}{params}\PY{p}{,} \PY{n}{x\PYZus{}min}\PY{p}{,} \PY{n}{x\PYZus{}max}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crimson}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Step function}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{age\PYZus{}new}\PY{p}{,} \PY{n}{spl}\PY{p}{(}\PY{n}{age\PYZus{}new}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Linear Spline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{age\PYZus{}new}\PY{p}{,} \PY{n}{spl2}\PY{p}{(}\PY{n}{age\PYZus{}new}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Cubic Spline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Age distribution of Coolness Index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{cubic\PYZus{}spline} \PY{o}{=} \PY{n}{LSQUnivariateSpline}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{df2}\PY{o}{.}\PY{n}{Cool}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{knots}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
 \end{Verbatim}
 
 
-    
-    \begin{verbatim}
-<IPython.core.display.Javascript object>
-    \end{verbatim}
-
-    
-    
-    \begin{verbatim}
-<IPython.core.display.HTML object>
-    \end{verbatim}
-
-    
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}23}]:} Text(0.5,1,'Age distribution of Coolness Index')
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{df1}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{df1}\PY{o}{.}\PY{n}{Cool}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Points}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df1}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{reg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OLS Stepwise}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{linear\PYZus{}spline}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{g}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Linear Spline}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{p}{,} \PY{n}{cubic\PYZus{}spline}\PY{p}{(}\PY{n}{df2}\PY{o}{.}\PY{n}{Age}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Cubic Spline}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coolness Index}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Coolness Index against age}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
-            
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_37_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{The predicted coolness of a 73\PYZhy{}year old from the cubic spline is}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{cubic\PYZus{}spline}\PY{p}{(}\PY{l+m+mi}{73}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The predicted coolness of a 73-year old from the cubic spline is 32.642301066279764
+
+    \end{Verbatim}
+
 
     % Add a bibliography block to the postdoc
     
